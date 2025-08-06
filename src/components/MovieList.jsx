@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
-  Container,
-  Grid,
   Card,
   CardMedia,
   CardContent,
@@ -104,32 +102,18 @@ const MovieList = ({ onCreateMovie, onEditMovie, onLogout }) => {
       setLoading(false);
     }
   };
-  // const handleDeleteConfirm = async () => {
-  //   try {
-  //     await moviesAPI.deleteMovie(movieToDelete.id);
-  //     setDeleteDialogOpen(false);
-  //     setMovieToDelete(null);
-  //     fetchMovies(); // Refresh the list
-  //   } catch (error) {
-  //     console.error('Error deleting movie:', error);
-  //     setError('Failed to delete movie. Please try again.');
-  //   }
-  // };
   const handleDeleteConfirm = async () => {
     try {
       await moviesAPI.deleteMovie(movieToDelete.id);
       setDeleteDialogOpen(false);
       setMovieToDelete(null);
 
-      // Wait for delete to finish, then check if we need to go back a page
       const updatedResponse = await moviesAPI.getMovies(currentPage, 8);
       const updatedMovies = updatedResponse.movies || [];
 
-      // If page is now empty and it's not the first page, go back one
       if (updatedMovies.length === 0 && currentPage > 1) {
         setCurrentPage((prev) => prev - 1);
       } else {
-        // Else, just refresh the page
         fetchMovies();
       }
     } catch (error) {
@@ -271,7 +255,6 @@ const MovieList = ({ onCreateMovie, onEditMovie, onLogout }) => {
                             component="img"
                             className="min-h-[400px]"
                             height="300"
-                            //  image={movie.poster ?`http://localhost:3001${movie.poster}` : '/placeholder-movie.jpg'}
                             image={
                               movie.poster
                                 ? `${

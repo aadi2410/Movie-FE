@@ -32,7 +32,6 @@ function App() {
   const [editingMovie, setEditingMovie] = useState(null);
 
   useEffect(() => {
-    // Check if user is already authenticated
     const authStatus = localStorage.getItem('isAuthenticated');
     if (authStatus === 'true') {
       setIsAuthenticated(true);
