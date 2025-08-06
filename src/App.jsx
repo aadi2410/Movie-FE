@@ -10,7 +10,7 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#00d4aa',
+      main: '#093545',
     },
     secondary: {
       main: '#3282b8',
@@ -21,7 +21,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Montserrat", sans-serif',
   },
 });
 
